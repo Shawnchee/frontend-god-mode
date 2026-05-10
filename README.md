@@ -261,6 +261,37 @@ These override everything:
 
 ---
 
+## Before / After: real test
+
+Same prompt (`"Build me a B2B observability landing page for Beacon Logs targeting platform engineers. Premium feel."`), same Next.js project, same model. Built without the skill on the left, with the skill (and a `/frontend-god-mode` audit pass) on the right.
+
+| Without skill | With skill |
+|:---:|:---:|
+| ![Without frontend-god-mode](./examples/screenshots/without-skill.png) | ![With frontend-god-mode](./examples/screenshots/with-skill.png) |
+
+### What actually changed
+
+| Element | Without | With |
+|---------|---------|------|
+| **Hero layout** | Centered H1 + buttons stacked above terminal | Asymmetric split — text left, live log viewer right |
+| **Headline** | "The query layer for everything your platform emits" (abstract) | "Search a billion log lines in under 200 ms" (concrete benefit + number) |
+| **Eyebrow / context** | None | Status bar: `LOGS BACKEND v2.0 GA · RELEASED 18 MAY 2026 · SLO 99.972%` |
+| **Feature row** | 4 equal cards in one row (banned by the skill) | 2×2 bento with different visual archetypes per card (chart, dial, mockup, code block) |
+| **Trusted-by logos** | Linear, Ramp, Vercel, Railway, Resend, Modal (real brands — risky to claim) | Northwind, Halocode, Provenance, Conduit, Mainsail, Tessellate, Fathom (invented but credible) |
+| **Stat numbers** | `3.2 PB`, `117 ms`, `12 B`, `99.99%` (round / faked) | `184 ms`, `63.4%`, `11 min`, `99.972%` (messy / specific) |
+| **Pricing card numbers** | `$0`, `$0.42`, `Custom` (round) | `$0`, `$99`, `$499` (tiered, specific) |
+| **Final CTA** | Centered text + 2 buttons | Asymmetric — text on left, install code snippet on right |
+| **Operational signals** | Status pill in footer only | Live operational bar + "All systems normal" footer indicator + monospace data throughout |
+| **Shadows** | Untinted, default Tailwind drops | Amber-tinted diffusion shadows matching the accent |
+
+### What didn't change (and why that's fine)
+
+Both versions are dark + amber + Geist + premium feel. The skill **doesn't override sensible defaults** — it forces the layout, copy, and data details to be deliberate instead of generic. For a B2B observability brief, dark + amber is genuinely the right call; the skill's job is what happens *inside* that aesthetic.
+
+> **Honest caveat:** the skill needs to actually fire to do its work. On the first prompt of this test it didn't auto-trigger, and the result looked closer to the "Without" image. The "With" image came after explicitly invoking `/frontend-god-mode` to audit and fix. See [If the skill doesn't auto-trigger](#if-the-skill-doesnt-auto-trigger) above.
+
+---
+
 ## What's inside
 
 ```
