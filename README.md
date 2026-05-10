@@ -9,11 +9,13 @@ A single Claude skill that turns Claude Code into a senior frontend designer + e
 ## Quick start (TL;DR)
 
 ```bash
-# Install (project-local)
-npx skills add Shawnchee/frontend-god-mode
+# Install for Claude Code (project-local)
+npx skills add Shawnchee/frontend-god-mode -a claude-code
 
 # Restart Claude Code, then in any frontend prompt — done.
 ```
+
+> **The `-a claude-code` flag matters.** Without it, `skills.sh` installs to a generic `.agents/skills/` folder that Claude Code doesn't read. Always include `-a <agent>` so it lands in the right place.
 
 That's it. Restart your editor, then describe what you want:
 
@@ -66,22 +68,31 @@ The skill itself is just markdown files. **No API keys, no installs, no backgrou
 
 ### Using skills.sh (recommended)
 
-Works with 45+ agents. One command.
+Works with 45+ agents. **Always pass `-a <agent>`** — without it, `skills.sh` falls back to a generic `.agents/skills/` folder that most agents don't read.
 
 ```bash
-# Project-local (current project only)
-npx skills add Shawnchee/frontend-god-mode
-
-# Global (all projects)
-npx skills add Shawnchee/frontend-god-mode -g
-
-# Specific agent
+# Claude Code, project-local (current project only)
 npx skills add Shawnchee/frontend-god-mode -a claude-code
+
+# Claude Code, global (all projects)
+npx skills add Shawnchee/frontend-god-mode -a claude-code -g
+
+# Other agents
 npx skills add Shawnchee/frontend-god-mode -a cursor
 npx skills add Shawnchee/frontend-god-mode -a windsurf
+npx skills add Shawnchee/frontend-god-mode -a codex
+npx skills add Shawnchee/frontend-god-mode -a gemini
 
 # CI-friendly (no prompts)
 npx skills add Shawnchee/frontend-god-mode -g -a claude-code -y
+```
+
+**Already installed without `-a` and ended up in `.agents/skills/`?** Just move it:
+
+```bash
+mv .agents/skills/frontend-god-mode .claude/skills/frontend-god-mode
+# or globally:
+mv ~/.agents/skills/frontend-god-mode ~/.claude/skills/frontend-god-mode
 ```
 
 ### Manual
@@ -147,8 +158,9 @@ If it didn't fire automatically, prompt: `/frontend-god-mode build me a hero sec
 
 | Symptom                                 | Fix                                                                 |
 |-----------------------------------------|---------------------------------------------------------------------|
+| Skill installed to `.agents/skills/` instead of `.claude/skills/` | You forgot `-a claude-code`. Either re-run `npx skills add Shawnchee/frontend-god-mode -a claude-code`, or move the folder: `mv .agents/skills/frontend-god-mode .claude/skills/`. |
 | Skill doesn't auto-trigger              | Prompt explicitly: `/frontend-god-mode <your task>` or "use the frontend-god-mode skill to..." |
-| Skill files not found                   | `ls ~/.claude/skills/frontend-god-mode/SKILL.md` — confirm the path. Re-run install. |
+| Skill files not found                   | `ls ~/.claude/skills/frontend-god-mode/SKILL.md` — confirm the path. Re-run install with `-a claude-code`. |
 | Listed but behavior not applied         | Fully restart Claude Code — close the terminal, don't just `/clear` or start a new chat. |
 | Project-local install ignored           | Launch `claude` from the project root that contains `.claude/skills/`. |
 | `/mcp` doesn't show `21st-dev-magic`    | Verify `.mcp.json` is at the project root, key is set, and you approved the security prompt on first launch. |
