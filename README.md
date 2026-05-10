@@ -1,6 +1,6 @@
 # Frontend God Mode
 
-A Claude Code skill that forces production-grade design taste on every frontend prompt — typography, layout, motion, color, copy — and bans the 24 AI tells that make generated UIs look generated.
+A Claude Code skill that consolidates all the famous frontend design skills — UI/UX Pro Max, Framer Motion, 21st.dev Magic, React Bits, Impeccable, Anthropic's frontend-design, design-taste-frontend — into one master skill that forces production-grade taste and bans the 24 AI tells that make generated UIs look generated.
 
 **No more generic AI output.** No more Inter + purple gradients + 3-card feature rows.
 
