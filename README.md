@@ -314,6 +314,10 @@ This skill consolidates and builds on:
 - [Impeccable](https://impeccable.style)
 - [design-taste-frontend](https://github.com/leonxlnx/taste-skill)
 
+## Contributing
+
+PRs welcome — see [CONTRIBUTING.md](./CONTRIBUTING.md) for what we accept (sharper opinions, new aesthetic profiles, anti-slop additions) and what we don't (hedges, "it depends" guidance, generic options).
+
 ## License
 
 MIT.
