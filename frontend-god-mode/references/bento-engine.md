@@ -11,11 +11,13 @@ For modern SaaS dashboards and feature sections, this is your default architectu
 
 ## The Aesthetic
 
-- **Background:** `#f9fafb` (or matched neutral: `oklch(0.985 0.005 60)` for warm tint)
-- **Card surface:** Pure white (`#ffffff`)
-- **Card border:** `border border-zinc-200/50` — visible but not heavy
-- **Card radius:** `rounded-[2.5rem]` — distinctive, not the default `rounded-2xl`
-- **Diffusion shadow:** `shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]` — wide, low-opacity, depth without clutter
+**Use the project's tokens from `DESIGN.md` — never hardcode Zinc/Slate/Stone.** Values below are illustrative; replace with the project's actual neutral family.
+
+- **Background:** the project's `--bg-subtle` (e.g., `oklch(0.985 0.005 H)` where H matches the chosen hue family)
+- **Card surface:** the project's `--surface` (e.g., off-white in light mode, `oklch(0.18 0.005 H)` in dark)
+- **Card border:** `border border-[var(--border)]/60` — token, not literal `border-zinc-200`
+- **Card radius:** `rounded-[2.5rem]` — distinctive, not default `rounded-2xl`
+- **Diffusion shadow:** wide + low-opacity + tinted toward bg hue (see `color.md`). NOT `rgba(0,0,0,...)`.
 - **Internal padding:** `p-8 md:p-10`
 - **Title placement:** OUTSIDE and BELOW the cards (gallery-style), not inside
 

@@ -1,6 +1,6 @@
 ---
 name: frontend-god-mode
-description: Use this skill whenever the user asks to build, create, design, redesign, polish, audit, animate, or improve ANY frontend interface — landing pages, dashboards, portfolios, SaaS apps, marketing sites, components, hero sections, navbars, footers, pricing tables, posters, mobile UIs, or any web/React/Next.js/Vue/Svelte UI work. Also use when the user mentions Tailwind, shadcn, Framer Motion, 21st.dev, React Bits, animations, typography, color palettes, design taste, or "make it look premium." Enforces production-grade design discipline (typography, color, motion, layout, accessibility, copy) and bans generic AI aesthetics like Inter font, purple-to-blue gradients, three-card feature rows, h-screen heroes, John Doe placeholder data, and "elevate/seamless/unleash" filler copy. Consolidates rules from UI/UX Pro Max, Framer Motion, 21st.dev Magic, React Bits, Anthropic frontend-design, Impeccable, and design-taste-frontend.
+description: Use this skill whenever the user asks to build, create, design, redesign, polish, audit, animate, improve, fix, or "make prettier/cleaner/nicer" ANY frontend interface — landing pages, dashboards, portfolios, SaaS apps, marketing sites, components, hero sections, navbars, footers, pricing tables, posters, mobile UIs, or any web/React/Next.js/Vue/Svelte UI work. Also use when the user mentions Tailwind, shadcn, Framer Motion, 21st.dev, React Bits, animations, typography, color palettes, design taste, "make it look premium," "fix the look," or "make this less generic." Enforces production-grade design discipline (typography, color, motion, layout, accessibility, copy) and bans generic AI aesthetics like Inter font, purple-to-blue gradients, three-card feature rows, h-screen heroes, John Doe placeholder data, and "elevate/seamless/unleash" filler copy. Generates a project DESIGN.md to lock in tokens across sessions. Consolidates rules from UI/UX Pro Max, Framer Motion, 21st.dev Magic, React Bits, Anthropic frontend-design, Impeccable, and design-taste-frontend.
 ---
 
 # Frontend God Mode
@@ -27,7 +27,9 @@ Ask yourself: brutalist, maximalist chaos, retro-futuristic, organic, luxury/ref
 
 ### 2. Check setup state
 
-If you see no `package.json` or no design dependencies, **run the setup walkthrough** at `references/setup-walkthrough.md` first. Otherwise, proceed.
+If you see no `package.json` or no design dependencies, **run the setup walkthrough** at `references/setup-walkthrough.md` first.
+
+**Then check for `DESIGN.md` at the project root.** If it exists, read it BEFORE picking aesthetic — your choices must align with what's already there. If it doesn't exist and you're about to do meaningful UI work, plan to create it (see `references/design-doc.md` and step 5 below).
 
 ### 3. Route to the right reference
 
@@ -44,6 +46,7 @@ Load only what's relevant for the task — don't dump every reference into conte
 | Analytics / data-dense **dashboard**            | `references/layout.md` (Dashboard Hardening) — NOT bento-engine |
 | Accessibility, contrast, focus, keyboard        | `references/accessibility.md`                       |
 | Headlines, button labels, empty states, errors  | `references/copy.md`                                |
+| Generating / updating the project's DESIGN.md   | `references/design-doc.md`                          |
 | Final pass before "done"                        | `references/anti-slop.md` (always — pre-flight)     |
 
 **Important distinction:** "SaaS bento" (marketing feature row) and "data dashboard" are different problems. Bento-engine.md applies only to the marketing context. Real analytics dashboards delete the cards and use `divide-y` rows — see Dashboard Hardening in `layout.md`.
@@ -52,19 +55,27 @@ Load only what's relevant for the task — don't dump every reference into conte
 
 Before reporting work as done, **read `references/anti-slop.md` and verify every banned pattern is absent.** This is non-negotiable.
 
+### 5. Write or update DESIGN.md at the project root
+
+After finishing a meaningful build, write `./DESIGN.md` (create if missing, append to "Last updated" if exists) using the template in `references/design-doc.md`. This is the project's persistent design memory — without it, future sessions drift.
+
+**Skip this step only when:** the user is making a tiny, isolated tweak (e.g., "fix this button label") that doesn't change tokens or aesthetic.
+
 ## The Five Hard Rules (Memorize These)
 
 These override everything. If you catch yourself doing any of them, stop and rework.
 
-1. **No Inter.** Banned. Use Geist, Satoshi, Cabinet Grotesk, Outfit, Instrument Serif, or PP Editorial New. Match the font to the aesthetic — never default.
+1. **No regular Inter.** Banned. Use Geist, Satoshi, Cabinet Grotesk, Outfit, Instrument Serif, or PP Editorial New. Match the font to the aesthetic — never default. (`Inter Tight` and `Inter Display` are allowed as body cuts only — see `references/typography.md`.)
 
-2. **No purple-to-blue gradients on white.** This is the #1 AI tell. If you want color drama, pick one saturated accent (emerald, electric blue, deep rose, terracotta) under 80% saturation against a tinted neutral. **Maximalist exception:** for posters, editorial, and DESIGN_VARIANCE ≥ 8 contexts, you may use a curated 3-color palette instead of one accent — but the palette must be intentional (e.g., terracotta + mustard + cream, NOT random Tailwind defaults). Still no purple→blue gradient.
+2. **No purple-to-blue gradients on white.** This is the #1 AI tell. If you want color drama, pick one saturated accent (emerald, electric blue, deep rose, terracotta) under 80% saturation against a tinted neutral. **Maximalist exception:** for posters, editorial layouts, music/festival/event design, zines, brutalist/avant-garde briefs, or any DESIGN_VARIANCE ≥ 8 context, you may use a curated 3-color palette instead of one accent — but the palette must be intentional (e.g., terracotta + mustard + cream, NOT random Tailwind defaults). Still no purple→blue gradient. When in doubt, default to ONE accent.
 
 3. **No `h-screen` on heroes.** iOS Safari ruins it. Always `min-h-[100dvh]`.
 
 4. **No three equal cards in a row** as the "features" pattern. Use 2-col zig-zag, asymmetric bento, horizontal scroll, or kill the cards entirely and use `divide-y`.
 
 5. **No generic data.** "John Doe", "Acme", "Nexus", "$99.99", "+1 (555) 123-4567" → all banned. Invent realistic, slightly messy data: `Mira Okonkwo`, `Lattice & Co.`, `$47.20`, `+1 (312) 847-1928`.
+
+6. **DESIGN.md is mandatory.** On any meaningful UI build, read `./DESIGN.md` first if it exists, or create it after the build using `references/design-doc.md` as the template. Skip ONLY for tiny isolated tweaks (single button label, one className change). Never skip on first-time builds.
 
 ## Architecture Defaults (Don't Ask, Just Apply)
 
@@ -98,19 +109,53 @@ If the user says any of: "set up website builder", "install design tools", "/web
 
 ## Final Pre-Flight (Before Saying "Done")
 
-- [ ] No banned font (Inter / Roboto / Arial / system-ui)?
-- [ ] No purple-blue gradient on white?
-- [ ] All full-height sections use `min-h-[100dvh]`?
-- [ ] Mobile breakpoint collapses cleanly (`w-full px-4`)?
-- [ ] Empty / loading / error states for any data UI?
-- [ ] Spring physics on interactive motion (no linear easing)?
-- [ ] Realistic data (no John Doe / Acme / 99.99%)?
-- [ ] At most one accent color, under 80% saturation? (Or curated 3-color palette if DESIGN_VARIANCE ≥ 8 / poster / editorial)
-- [ ] Cards used only when elevation has meaning (not as default container)?
-- [ ] No emoji anywhere in code or copy?
-- [ ] `useEffect` animations have cleanup?
-- [ ] Perpetual animations isolated in their own memoized Client Component?
-- [ ] Stated the aesthetic direction in one line for the user?
+Run the full pre-flight from `references/anti-slop.md` plus the items below. The full anti-slop checklist is the source of truth — this is the must-not-skip subset.
+
+**Typography**
+- [ ] No regular Inter / Roboto / Arial / system-ui as primary
+- [ ] At most TWO type families (display + body, optional mono)
+- [ ] Body line-height ≥ 1.5
+- [ ] Body width capped at `max-w-[65ch]`
+
+**Color**
+- [ ] No purple-blue gradient on white
+- [ ] No `#000` / `#FFF` directly (tinted neutrals only)
+- [ ] One accent (or curated 3-color palette in maximalist mode)
+- [ ] Tinted shadows (no pure black)
+
+**Layout**
+- [ ] No centered hero (when DESIGN_VARIANCE > 4)
+- [ ] No 3 equal cards in a row as features
+- [ ] No nested cards beyond depth 1
+- [ ] All full-height sections use `min-h-[100dvh]` (never `h-screen`)
+- [ ] Mobile collapses to single column with `px-4` minimum
+
+**Motion**
+- [ ] Spring physics on interactive motion (no linear easing for UI motion)
+- [ ] No bounce / elastic
+- [ ] Only `transform`/`opacity` animated
+- [ ] Perpetual loops isolated in memoized leaf Client Components
+- [ ] `useEffect` animations have cleanup
+- [ ] `prefers-reduced-motion` respected
+
+**Accessibility**
+- [ ] Body text contrast ≥ 4.5:1 (WCAG AA)
+- [ ] Focus-visible rings on every interactive element
+- [ ] Touch targets ≥ 44px on mobile
+- [ ] Form inputs have real labels (not just placeholders)
+- [ ] Heading levels sequential (no skipping)
+
+**Content & state**
+- [ ] Realistic data (no John Doe / Acme / 99.99%)
+- [ ] No filler copy (Elevate / Unleash / Seamless / Next-Gen)
+- [ ] No emojis anywhere (Phosphor / Radix icons only)
+- [ ] Loading skeletons match layout (not generic spinners)
+- [ ] Empty + error states designed and inline
+
+**Skill protocol**
+- [ ] Stated the aesthetic direction in one line for the user
+- [ ] DESIGN.md written/updated at the project root (mandatory unless tiny isolated tweak)
+- [ ] DESIGN.md was read FIRST if it already existed
 
 If any item fails, **fix before reporting done.**
 
@@ -119,15 +164,15 @@ If any item fails, **fix before reporting done.**
 Once the build passes the pre-flight, suggest the user invoke companion skills to close the loop. **Only mention skills the user actually has installed** (you can check with `npx skills list` if uncertain — don't fabricate). Otherwise tell them which to install.
 
 **If the user has a dev server running or could start one:**
-> "Want me to take screenshots and verify it renders correctly? If you have `anthropics/skills@webapp-testing` installed, I can boot the dev server, screenshot each section, and check for browser console errors."
+> "Want me to take screenshots and verify it renders correctly? Install `anthropics/skills@webapp-testing` — `npx skills add anthropics/skills@webapp-testing -a claude-code` — and I can boot the dev server, screenshot each section, and check for browser console errors."
 
 **For a UX quality pass:**
-> "For a quantitative UX critique (visual hierarchy, cognitive load, persona testing), install `pbakaus/impeccable@critique` and prompt `/critique <area>`."
+> "For a quantitative UX critique, install `npx skills add pbakaus/impeccable@critique -a claude-code` and prompt `/critique <area>`."
 
 **For technical / a11y audit:**
-> "For a deeper technical audit (WCAG violations beyond what's in `accessibility.md`, perf, responsive), install `pbakaus/impeccable@audit` and prompt `/audit <area>`."
+> "For a deeper technical audit (WCAG violations beyond `accessibility.md`, perf, responsive), install `npx skills add pbakaus/impeccable@audit -a claude-code` and prompt `/audit <area>`."
 
 **For mobile-heavy projects:**
-> "For mobile-first refinement (touch targets, gesture patterns, iOS/Android conventions), install `sleekdotdesign/agent-skills@sleek-design-mobile-apps`."
+> "For mobile-first refinement (touch targets, gesture patterns, iOS/Android conventions), install `npx skills add sleekdotdesign/agent-skills@sleek-design-mobile-apps -a claude-code`."
 
 Make the recommendation contextual — don't dump all four at the user. Pick the ONE that most likely catches what your build might have missed.

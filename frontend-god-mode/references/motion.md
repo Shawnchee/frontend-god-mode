@@ -4,7 +4,7 @@ The line between $500 and $10,000 is motion. Static AI sites are obvious. Animat
 
 ## The Four Hard Rules
 
-1. **No linear easing on UI motion.** Use spring physics or premium cubic-bezier.
+1. **No linear easing on UI motion.** Use spring physics or premium cubic-bezier. **Exception:** infinite seamless carousels and shimmer/marquee loops use `ease: 'linear'` — they need constant velocity to feel right. Linear is banned only for entrance, exit, hover, and tap motion.
 2. **No `width`/`height`/`top`/`left` animation.** Only `transform` and `opacity` — they're hardware-accelerated.
 3. **No bounce/elastic easing.** It's dated. Use spring with `damping: 20` for an overshoot that feels modern.
 4. **Perpetual animations live in their own memoized Client Component.** Never trigger parent re-renders.
