@@ -27,10 +27,10 @@ else
 fi
 
 # If running locally from the repo, just copy from here
-if [ "${LOCAL_INSTALL:-false}" = "true" ] || [ -d "./skill" ]; then
-  SOURCE_DIR="./skill"
+if [ "${LOCAL_INSTALL:-false}" = "true" ] || [ -d "./frontend-god-mode" ]; then
+  SOURCE_DIR="./frontend-god-mode"
 else
-  SOURCE_DIR="${TEMP_DIR}/repo/skill"
+  SOURCE_DIR="${TEMP_DIR}/repo/frontend-god-mode"
 fi
 
 if [ ! -d "${SOURCE_DIR}" ]; then

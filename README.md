@@ -9,29 +9,29 @@ A single Claude skill that turns Claude Code into a senior frontend designer + e
 ## Quick start (TL;DR)
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/Shawnchee/frontend-god-mode.git
+# Install (project-local)
+npx skills add Shawnchee/frontend-god-mode
 
-# 2. Install user-wide so it loads in every project
-mkdir -p ~/.claude/skills/frontend-god-mode
-cp -r frontend-god-mode/skill/* ~/.claude/skills/frontend-god-mode/
-
-# 3. Restart Claude Code (close + reopen the terminal)
-
-# 4. Verify — in any Claude Code session, type:
-#    /skills
-#    You should see "frontend-god-mode" listed.
+# Restart Claude Code, then in any frontend prompt — done.
 ```
 
-That's it. The skill auto-triggers on any frontend / UI prompt. Just describe what you want:
+That's it. Restart your editor, then describe what you want:
 
 > "Build me a SaaS landing page for a B2B observability tool. Premium feel."
 
 Need 21st.dev components too? See [21st.dev Magic Setup](#21stdev-magic-setup-optional) below — it's optional.
 
-**If `/skills` doesn't show it:**
-- Confirm the files exist: `ls ~/.claude/skills/frontend-god-mode/SKILL.md`
-- Make sure you fully restarted Claude Code (not just a new chat — fully reopen the terminal)
+### If the skill doesn't auto-trigger
+
+Skills auto-fire when Claude judges your prompt matches the skill description. Sometimes it doesn't fire (especially on terse prompts). When in doubt, **invoke it explicitly:**
+
+```
+/frontend-god-mode build me a landing page for [whatever]
+```
+
+Or in chat: "use the frontend-god-mode skill to build me a landing page..."
+
+You'll know it fired when Claude opens with a one-line aesthetic statement (e.g., "Picking premium SaaS — Geist + Geist Mono, Slate neutrals, electric blue accent") before writing code, and when it audits the result against the pre-flight checklist.
 
 ---
 
@@ -64,78 +64,93 @@ The skill itself is just markdown files. **No API keys, no installs, no backgrou
 
 ## Install
 
-### Option A — Project-local (recommended for testing)
+### Using skills.sh (recommended)
 
-The skill only loads when Claude Code is launched from this project. Nothing touches your home directory.
-
-```bash
-# 1. Clone this repo somewhere
-git clone https://github.com/Shawnchee/frontend-god-mode.git ~/frontend-god-mode
-
-# 2. Inside YOUR project, copy the skill into .claude/skills/
-cd /path/to/your-project
-mkdir -p .claude/skills/frontend-god-mode
-cp -r ~/frontend-god-mode/skill/* .claude/skills/frontend-god-mode/
-
-# 3. Restart Claude Code (close + reopen) and launch it from your project root
-claude
-```
-
-### Option B — User-wide (all projects)
-
-The skill is auto-available in any project Claude Code opens.
+Works with 45+ agents. One command.
 
 ```bash
-git clone https://github.com/Shawnchee/frontend-god-mode.git ~/frontend-god-mode
-mkdir -p ~/.claude/skills/frontend-god-mode
-cp -r ~/frontend-god-mode/skill/* ~/.claude/skills/frontend-god-mode/
+# Project-local (current project only)
+npx skills add Shawnchee/frontend-god-mode
+
+# Global (all projects)
+npx skills add Shawnchee/frontend-god-mode -g
+
+# Specific agent
+npx skills add Shawnchee/frontend-god-mode -a claude-code
+npx skills add Shawnchee/frontend-god-mode -a cursor
+npx skills add Shawnchee/frontend-god-mode -a windsurf
+
+# CI-friendly (no prompts)
+npx skills add Shawnchee/frontend-god-mode -g -a claude-code -y
 ```
 
-Restart Claude Code.
-
-### Option C — From the .skill bundle
-
-If you only have the zipped bundle:
+### Manual
 
 ```bash
-# Project-local
-unzip frontend-god-mode.skill -d /path/to/your-project/.claude/skills/frontend-god-mode/
-
-# Or user-wide
-unzip frontend-god-mode.skill -d ~/.claude/skills/frontend-god-mode/
+git clone https://github.com/Shawnchee/frontend-god-mode.git
 ```
 
-### Option D — One-line install (fastest)
+Copy the skill folder for your agent:
+
+| Agent              | Project                                | Global                       |
+|--------------------|----------------------------------------|------------------------------|
+| Claude Code        | `.claude/skills/`                      | `~/.claude/skills/`          |
+| Cursor             | `.cursor/skills/`                      | `~/.cursor/skills/`          |
+| Windsurf           | `.windsurf/skills/`                    | `~/.windsurf/skills/`        |
+| Codex / OpenCode   | `.codex/skills/`                       | `~/.codex/skills/`           |
+| Gemini CLI         | `.gemini/skills/`                      | `~/.gemini/skills/`          |
+| Copilot            | `.github/copilot-instructions.md`      | —                            |
+| Antigravity        | Project config directory               | —                            |
+
+```bash
+# Example: Claude Code, project-level
+cp -r frontend-god-mode/frontend-god-mode .claude/skills/
+
+# Example: Claude Code, global
+cp -r frontend-god-mode/frontend-god-mode ~/.claude/skills/
+```
+
+Restart your editor after installing.
+
+### One-line install script
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Shawnchee/frontend-god-mode/main/install.sh | bash
 ```
 
-This installs user-wide (Option B). Restart Claude Code after.
+Installs globally for Claude Code. Restart after.
+
+---
+
+## Uninstall
+
+```bash
+npx skills remove frontend-god-mode
+# or, manually:
+rm -rf .claude/skills/frontend-god-mode
+rm -rf ~/.claude/skills/frontend-god-mode
+```
 
 ---
 
 ## Verify the install
 
-After restarting Claude Code, run this in any session:
-
-```
-/skills
-```
-
-You should see `frontend-god-mode` listed as available. Then try:
+After restarting your editor, prompt:
 
 > "Build me a hero section for a B2B observability product"
 
-Claude should open with a one-line aesthetic statement (e.g., "Picking premium SaaS — Geist + Geist Mono, Slate neutrals, electric blue accent") before writing any code. If it does, the skill is working.
+The skill is firing if Claude opens with a one-line aesthetic statement (e.g., "Picking premium SaaS — Geist + Geist Mono, Slate neutrals, electric blue accent") before writing any code, AND audits the result against the pre-flight checklist at the end.
+
+If it didn't fire automatically, prompt: `/frontend-god-mode build me a hero section…`
 
 ### Troubleshooting
 
 | Symptom                                 | Fix                                                                 |
 |-----------------------------------------|---------------------------------------------------------------------|
-| `/skills` doesn't list `frontend-god-mode` | Verify files: `ls ~/.claude/skills/frontend-god-mode/SKILL.md`. Confirm the path exists. |
-| Listed but skill behavior isn't applied | Fully restart Claude Code — close the terminal, don't just /clear or start a new chat. |
-| Project-local install (Option A) ignored | Make sure you launch `claude` from the project root that contains `.claude/skills/`. |
+| Skill doesn't auto-trigger              | Prompt explicitly: `/frontend-god-mode <your task>` or "use the frontend-god-mode skill to..." |
+| Skill files not found                   | `ls ~/.claude/skills/frontend-god-mode/SKILL.md` — confirm the path. Re-run install. |
+| Listed but behavior not applied         | Fully restart Claude Code — close the terminal, don't just `/clear` or start a new chat. |
+| Project-local install ignored           | Launch `claude` from the project root that contains `.claude/skills/`. |
 | `/mcp` doesn't show `21st-dev-magic`    | Verify `.mcp.json` is at the project root, key is set, and you approved the security prompt on first launch. |
 
 ---
@@ -237,25 +252,25 @@ These override everything:
 ## What's inside
 
 ```
-frontend-god-mode/
-├── skill/
-│   ├── SKILL.md                    # Main orchestrator (auto-loaded)
+frontend-god-mode/                       # repo root
+├── frontend-god-mode/                   # the skill (this is what gets copied into .claude/skills/)
+│   ├── SKILL.md                         # Main orchestrator (auto-loaded)
 │   └── references/
-│       ├── typography.md           # Approved fonts, banned defaults, free fallbacks
-│       ├── color.md                # OKLCH palettes, anti-purple rules, maximalist exception
-│       ├── motion.md               # Framer Motion + spring physics + perpetual motion
-│       ├── layout.md               # Asymmetric heroes, dashboard hardening, dvh
-│       ├── components.md           # React Bits + 21st.dev + shadcn integration
-│       ├── bento-engine.md         # Modern SaaS bento grid (marketing only)
-│       ├── accessibility.md        # WCAG AA contrast, focus, keyboard, semantic HTML
-│       ├── copy.md                 # Banned vocab, headline patterns, empty/error states
-│       ├── anti-slop.md            # 24 AI tells, pre-flight checklist
-│       └── setup-walkthrough.md    # First-run install wizard
+│       ├── typography.md                # Approved fonts, banned defaults, free fallbacks
+│       ├── color.md                     # OKLCH palettes, anti-purple rules, maximalist exception
+│       ├── motion.md                    # Framer Motion + spring physics + perpetual motion
+│       ├── layout.md                    # Asymmetric heroes, dashboard hardening, dvh
+│       ├── components.md                # React Bits + 21st.dev + shadcn integration
+│       ├── bento-engine.md              # Modern SaaS bento grid (marketing only)
+│       ├── accessibility.md             # WCAG AA contrast, focus, keyboard, semantic HTML
+│       ├── copy.md                      # Banned vocab, headline patterns, empty/error states
+│       ├── anti-slop.md                 # 24 AI tells, pre-flight checklist
+│       └── setup-walkthrough.md         # First-run install wizard
 ├── dist/
-│   └── frontend-god-mode.skill     # Packaged installable (zip)
+│   └── frontend-god-mode.skill          # Packaged installable (zip)
 ├── examples/
-│   └── test-prompts.md             # 5 test prompts with expected outputs
-├── install.sh                      # One-line installer
+│   └── test-prompts.md                  # 5 test prompts with expected outputs
+├── install.sh                           # One-line installer
 └── README.md
 ```
 

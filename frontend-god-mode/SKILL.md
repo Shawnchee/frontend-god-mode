@@ -1,6 +1,6 @@
 ---
 name: frontend-god-mode
-description: Build production-grade, distinctive frontend interfaces that reject generic AI aesthetics. Triggers on requests to build, design, redesign, polish, animate, or audit any web UI — landing pages, dashboards, portfolios, SaaS apps, components, posters. Consolidates UI/UX Pro Max, Framer Motion patterns, 21st.dev components, React Bits, Impeccable design references, and high-agency taste enforcement. Includes a one-time setup walkthrough for the underlying tools (UI/UX Pro Max CLI, Framer Motion, 21st.dev MCP, React Bits via shadcn).
+description: Use this skill whenever the user asks to build, create, design, redesign, polish, audit, animate, or improve ANY frontend interface — landing pages, dashboards, portfolios, SaaS apps, marketing sites, components, hero sections, navbars, footers, pricing tables, posters, mobile UIs, or any web/React/Next.js/Vue/Svelte UI work. Also use when the user mentions Tailwind, shadcn, Framer Motion, 21st.dev, React Bits, animations, typography, color palettes, design taste, or "make it look premium." Enforces production-grade design discipline (typography, color, motion, layout, accessibility, copy) and bans generic AI aesthetics like Inter font, purple-to-blue gradients, three-card feature rows, h-screen heroes, John Doe placeholder data, and "elevate/seamless/unleash" filler copy. Consolidates rules from UI/UX Pro Max, Framer Motion, 21st.dev Magic, React Bits, Anthropic frontend-design, Impeccable, and design-taste-frontend.
 ---
 
 # Frontend God Mode
