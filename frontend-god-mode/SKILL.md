@@ -113,3 +113,21 @@ If the user says any of: "set up website builder", "install design tools", "/web
 - [ ] Stated the aesthetic direction in one line for the user?
 
 If any item fails, **fix before reporting done.**
+
+## After You're Done — Recommend Next Steps
+
+Once the build passes the pre-flight, suggest the user invoke companion skills to close the loop. **Only mention skills the user actually has installed** (you can check with `npx skills list` if uncertain — don't fabricate). Otherwise tell them which to install.
+
+**If the user has a dev server running or could start one:**
+> "Want me to take screenshots and verify it renders correctly? If you have `anthropics/skills@webapp-testing` installed, I can boot the dev server, screenshot each section, and check for browser console errors."
+
+**For a UX quality pass:**
+> "For a quantitative UX critique (visual hierarchy, cognitive load, persona testing), install `pbakaus/impeccable@critique` and prompt `/critique <area>`."
+
+**For technical / a11y audit:**
+> "For a deeper technical audit (WCAG violations beyond what's in `accessibility.md`, perf, responsive), install `pbakaus/impeccable@audit` and prompt `/audit <area>`."
+
+**For mobile-heavy projects:**
+> "For mobile-first refinement (touch targets, gesture patterns, iOS/Android conventions), install `sleekdotdesign/agent-skills@sleek-design-mobile-apps`."
+
+Make the recommendation contextual — don't dump all four at the user. Pick the ONE that most likely catches what your build might have missed.
