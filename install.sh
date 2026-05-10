@@ -6,7 +6,7 @@ set -euo pipefail
 
 SKILL_NAME="frontend-god-mode"
 TARGET_DIR="${HOME}/.claude/skills/${SKILL_NAME}"
-REPO_URL="https://github.com/shawnchee/frontend-god-mode"
+REPO_URL="https://github.com/Shawnchee/frontend-god-mode"
 TEMP_DIR="$(mktemp -d)"
 
 echo ""

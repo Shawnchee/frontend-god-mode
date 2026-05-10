@@ -9,8 +9,8 @@ A single Claude skill that turns Claude Code into a senior frontend designer + e
 ## Quick start (TL;DR)
 
 ```bash
-# 1. Get the skill (use git clone once published; for now: clone or copy locally)
-git clone https://github.com/shawnchee/frontend-god-mode.git
+# 1. Clone the repo
+git clone https://github.com/Shawnchee/frontend-god-mode.git
 
 # 2. Install user-wide so it loads in every project
 mkdir -p ~/.claude/skills/frontend-god-mode
@@ -70,7 +70,7 @@ The skill only loads when Claude Code is launched from this project. Nothing tou
 
 ```bash
 # 1. Clone this repo somewhere
-git clone https://github.com/shawnchee/frontend-god-mode.git ~/frontend-god-mode
+git clone https://github.com/Shawnchee/frontend-god-mode.git ~/frontend-god-mode
 
 # 2. Inside YOUR project, copy the skill into .claude/skills/
 cd /path/to/your-project
@@ -86,7 +86,7 @@ claude
 The skill is auto-available in any project Claude Code opens.
 
 ```bash
-git clone https://github.com/shawnchee/frontend-god-mode.git ~/frontend-god-mode
+git clone https://github.com/Shawnchee/frontend-god-mode.git ~/frontend-god-mode
 mkdir -p ~/.claude/skills/frontend-god-mode
 cp -r ~/frontend-god-mode/skill/* ~/.claude/skills/frontend-god-mode/
 ```
@@ -105,15 +105,13 @@ unzip frontend-god-mode.skill -d /path/to/your-project/.claude/skills/frontend-g
 unzip frontend-god-mode.skill -d ~/.claude/skills/frontend-god-mode/
 ```
 
-### Option D — One-line install (after the repo is published to GitHub)
-
-> **Note:** This option only works once `shawnchee/frontend-god-mode` is published. Until then, use Option A or B.
+### Option D — One-line install (fastest)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/shawnchee/frontend-god-mode/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Shawnchee/frontend-god-mode/main/install.sh | bash
 ```
 
-This installs user-wide (Option B).
+This installs user-wide (Option B). Restart Claude Code after.
 
 ---
 
