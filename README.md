@@ -1,8 +1,18 @@
 # Frontend God Mode
 
-A single Claude skill that turns Claude Code into a senior frontend designer + engineer. Consolidates UI/UX Pro Max, Framer Motion patterns, 21st.dev Magic, React Bits, Anthropic's frontend-design, Impeccable, and high-agency taste rules into one master skill.
+A Claude Code skill that forces production-grade design taste on every frontend prompt — typography, layout, motion, color, copy — and bans the 24 AI tells that make generated UIs look generated.
 
 **No more generic AI output.** No more Inter + purple gradients + 3-card feature rows.
+
+## Without vs With
+
+Same prompt. Same Next.js project. Same model. One shot each — no iterative refinement.
+
+| Without skill | With skill |
+|:---:|:---:|
+| ![Without frontend-god-mode](./examples/screenshots/without-skill.png) | ![With frontend-god-mode](./examples/screenshots/with-skill.png) |
+
+Centered hero + 4 equal cards + round numbers + real-brand logos vs asymmetric hero + bento grid + messy stats + invented credible brands. Full diff in [Before / After: real test](#before--after-real-test) below.
 
 ---
 
@@ -263,11 +273,7 @@ These override everything:
 
 ## Before / After: real test
 
-Same prompt (`"Build me a B2B observability landing page for Beacon Logs targeting platform engineers. Premium feel."`), same Next.js project, same model. Built without the skill on the left, with the skill (and a `/frontend-god-mode` audit pass) on the right.
-
-| Without skill | With skill |
-|:---:|:---:|
-| ![Without frontend-god-mode](./examples/screenshots/without-skill.png) | ![With frontend-god-mode](./examples/screenshots/with-skill.png) |
+Prompt used in both: `"Build me a B2B observability landing page for Beacon Logs targeting platform engineers. Premium feel."` Built without the skill on the left, with the skill (after explicit `/frontend-god-mode` invocation) on the right.
 
 ### What actually changed
 
