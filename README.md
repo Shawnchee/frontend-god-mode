@@ -347,7 +347,7 @@ frontend-god-mode is the **taste layer**. These skills, installable separately, 
 
 ```bash
 # Real UI research — ground the direction in shipped web and iOS patterns
-npx skills add aislon/uizze-mcp@uizze-ui-research -a claude-code
+npx skills add uizze/uizze-mcp@uizze-ui-research -a claude-code
 
 # Visual testing — Playwright + screenshots, closes the build → verify loop
 npx skills add anthropics/skills@webapp-testing -a claude-code
