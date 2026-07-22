@@ -346,6 +346,9 @@ frontend-god-mode is the **taste layer**. These skills, installable separately, 
 ### Tier 1 — install alongside frontend-god-mode
 
 ```bash
+# Real UI research — ground the direction in shipped web and iOS patterns
+npx skills add uizze/uizze-mcp@uizze-ui-research -a claude-code
+
 # Visual testing — Playwright + screenshots, closes the build → verify loop
 npx skills add anthropics/skills@webapp-testing -a claude-code
 
@@ -377,13 +380,16 @@ npx skills add addyosmani/web-quality-skills@accessibility -a claude-code
 
 ### Recommended workflow
 
-1. **frontend-god-mode** picks aesthetic and builds
-2. **webapp-testing** boots the dev server and takes screenshots
-3. **impeccable@critique** scores the UX
-4. **impeccable@audit** runs the a11y/perf checks
-5. frontend-god-mode applies the fixes from steps 3-4
+1. **uizze-ui-research** gathers relevant interface evidence and extracts transferable patterns without copying a screen
+2. **frontend-god-mode** picks aesthetic and builds
+3. **webapp-testing** boots the dev server and takes screenshots
+4. **impeccable@critique** scores the UX
+5. **impeccable@audit** runs the a11y/perf checks
+6. frontend-god-mode applies the fixes from steps 4-5
 
 Each step is a separate Claude prompt. The skills compose because they don't overlap in scope — taste layer vs verification layer vs specialty knowledge.
+
+The UIZZE research skill works from the public catalogue; browse it directly at [https://uizze.com](https://uizze.com).
 
 ### Verify which companion skills are loaded
 
