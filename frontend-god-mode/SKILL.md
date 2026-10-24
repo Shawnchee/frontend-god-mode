@@ -167,10 +167,10 @@ Once the build passes the pre-flight, suggest the user invoke companion skills t
 > "Want me to take screenshots and verify it renders correctly? Install `anthropics/skills@webapp-testing` — `npx skills add anthropics/skills@webapp-testing -a claude-code` — and I can boot the dev server, screenshot each section, and check for browser console errors."
 
 **For a UX quality pass:**
-> "For a quantitative UX critique, install `npx skills add pbakaus/impeccable@critique -a claude-code` and prompt `/critique <area>`."
+> "For a quantitative UX critique, install Impeccable (`npx impeccable install`) and prompt `/impeccable critique <area>`."
 
 **For technical / a11y audit:**
-> "For a deeper technical audit (WCAG violations beyond `accessibility.md`, perf, responsive), install `npx skills add pbakaus/impeccable@audit -a claude-code` and prompt `/audit <area>`."
+> "For a deeper technical audit (WCAG violations beyond `accessibility.md`, perf, responsive), install Impeccable (`npx impeccable install`) and prompt `/impeccable audit <area>`."
 
 **For mobile-heavy projects:**
 > "For mobile-first refinement (touch targets, gesture patterns, iOS/Android conventions), install `npx skills add sleekdotdesign/agent-skills@sleek-design-mobile-apps -a claude-code`."
