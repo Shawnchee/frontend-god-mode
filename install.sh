@@ -8,6 +8,7 @@ SKILL_NAME="frontend-god-mode"
 TARGET_DIR="${HOME}/.claude/skills/${SKILL_NAME}"
 REPO_URL="https://github.com/Shawnchee/frontend-god-mode"
 TEMP_DIR="$(mktemp -d)"
+trap 'rm -rf "${TEMP_DIR}"' EXIT
 
 echo ""
 echo "═══════════════════════════════════════════════════"
@@ -26,30 +27,29 @@ else
   LOCAL_INSTALL=true
 fi
 
-# If running locally from the repo, just copy from here
-if [ "${LOCAL_INSTALL:-false}" = "true" ] || [ -d "./frontend-god-mode" ]; then
+# If running locally from the repo root, just copy from here
+if [ "${LOCAL_INSTALL:-false}" = "true" ] || [ -f "./frontend-god-mode/SKILL.md" ]; then
   SOURCE_DIR="./frontend-god-mode"
 else
   SOURCE_DIR="${TEMP_DIR}/repo/frontend-god-mode"
 fi
 
-if [ ! -d "${SOURCE_DIR}" ]; then
+if [ ! -f "${SOURCE_DIR}/SKILL.md" ]; then
   echo "✗ Could not find skill source at ${SOURCE_DIR}"
   exit 1
 fi
 
-# Backup existing install
+# Backup existing install (outside skills/, so Claude Code doesn't load it as a duplicate skill)
 if [ -d "${TARGET_DIR}" ]; then
-  BACKUP="${TARGET_DIR}.backup.$(date +%s)"
+  BACKUP_ROOT="${HOME}/.claude/skill-backups"
+  BACKUP="${BACKUP_ROOT}/${SKILL_NAME}.$(date +%s)"
+  mkdir -p "${BACKUP_ROOT}"
   echo "→ Existing install found. Backing up to ${BACKUP}"
   mv "${TARGET_DIR}" "${BACKUP}"
 fi
 
 mkdir -p "${TARGET_DIR}"
 cp -R "${SOURCE_DIR}/." "${TARGET_DIR}/"
-
-# Cleanup
-rm -rf "${TEMP_DIR}"
 
 echo ""
 echo "✓ Installed to ${TARGET_DIR}"
