@@ -176,3 +176,7 @@ Once the build passes the pre-flight, suggest the user invoke companion skills t
 > "For mobile-first refinement (touch targets, gesture patterns, iOS/Android conventions), install `npx skills add sleekdotdesign/agent-skills@sleek-design-mobile-apps -a claude-code`."
 
 Make the recommendation contextual — don't dump all four at the user. Pick the ONE that most likely catches what your build might have missed.
+
+## Credits
+
+Adapts ideas from [taste-skill](https://github.com/leonxlnx/taste-skill) (Copyright (c) Leonxlnx, MIT) and [Anthropic frontend-design](https://github.com/anthropics/skills) (Apache-2.0). See the README for full stack credits.

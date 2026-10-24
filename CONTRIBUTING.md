@@ -88,12 +88,6 @@ above sans-serif H2s are a stronger editorial signal — added to
 the OpenType section with a working code example.
 ```
 
-End the commit body with the Co-Authored-By line if you got help from an AI:
-
-```
-Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
-```
-
 ## How to propose a new reference file
 
 Open an issue first. Title: "New reference: <topic>". Describe:
