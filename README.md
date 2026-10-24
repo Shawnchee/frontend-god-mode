@@ -397,13 +397,15 @@ npx skills list
 
 This skill consolidates and builds on:
 
-- [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+- [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) (MIT)
 - [Framer Motion](https://www.framer.com/motion/)
 - [21st.dev Magic](https://21st.dev/magic)
 - [React Bits](https://reactbits.dev)
-- [Anthropic frontend-design](https://github.com/anthropics/skills)
-- [Impeccable](https://impeccable.style)
-- [design-taste-frontend](https://github.com/leonxlnx/taste-skill)
+- [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) (Apache-2.0)
+- [Impeccable](https://impeccable.style) (Apache-2.0)
+- [design-taste-frontend](https://github.com/leonxlnx/taste-skill) (MIT, © Leonxlnx)
+
+Those projects keep their own licenses. This repo doesn't vendor their files — the rules here are adapted and rewritten, not copied — and no React Bits or 21st.dev component code is redistributed; Claude pulls those from their sources when you install them.
 
 ## Contributing
 
@@ -411,4 +413,4 @@ PRs welcome — see [CONTRIBUTING.md](./CONTRIBUTING.md) for what we accept (sha
 
 ## License
 
-MIT.
+MIT — see [LICENSE](./LICENSE).
