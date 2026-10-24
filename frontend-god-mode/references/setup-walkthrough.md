@@ -35,7 +35,7 @@ Tell them:
 > If you want extra design vocabulary on top of frontend-god-mode, UI/UX Pro Max is a Claude skill that adds 50+ styles, 161 palettes, 57 font pairings. **It's optional** — frontend-god-mode already covers the essentials. But if you want it, install via:
 >
 > ```bash
-> npx skills add @nextlevelbuilder/ui-ux-pro-max-skill
+> npx skills add nextlevelbuilder/ui-ux-pro-max-skill -a claude-code
 > ```
 >
 > If that command doesn't work in your environment, skip this step. The base frontend-god-mode skill works on its own.

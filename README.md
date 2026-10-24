@@ -59,7 +59,7 @@ The skill itself is just markdown files. **No API keys, no installs, no backgrou
 
 ## What this fetches at runtime
 
-**The skill: nothing.** It's ~70KB of plain markdown that Claude reads when you give it a frontend task. No HTTP calls, no telemetry.
+**The skill: nothing.** It's ~80KB of plain markdown that Claude reads when you give it a frontend task. No HTTP calls, no telemetry.
 
 **Libraries the skill writes code against (only fetch when YOU run them):**
 
@@ -314,12 +314,16 @@ frontend-god-mode/                       # repo root
 │       ├── accessibility.md             # WCAG AA contrast, focus, keyboard, semantic HTML
 │       ├── copy.md                      # Banned vocab, headline patterns, empty/error states
 │       ├── anti-slop.md                 # 24 AI tells, pre-flight checklist
+│       ├── design-doc.md                # DESIGN.md template + anti-drift rules
 │       └── setup-walkthrough.md         # First-run install wizard
 ├── dist/
 │   └── frontend-god-mode.skill          # Packaged installable (zip)
 ├── examples/
-│   └── test-prompts.md                  # 5 test prompts with expected outputs
+│   ├── test-prompts.md                  # 5 test prompts with expected outputs
+│   └── screenshots/                     # Before / After images
 ├── install.sh                           # One-line installer
+├── CONTRIBUTING.md
+├── LICENSE
 └── README.md
 ```
 
@@ -349,11 +353,8 @@ frontend-god-mode is the **taste layer**. These skills, installable separately, 
 # Visual testing — Playwright + screenshots, closes the build → verify loop
 npx skills add anthropics/skills@webapp-testing -a claude-code
 
-# UX critique — quantitative scoring, persona testing, anti-pattern detection
-npx skills add pbakaus/impeccable@critique -a claude-code
-
-# Technical audit — a11y, performance, responsive checks with severity ratings
-npx skills add pbakaus/impeccable@audit -a claude-code
+# Impeccable — UX critique (/impeccable critique) + technical audit (/impeccable audit)
+npx impeccable install
 
 # Vercel's interface guidelines — complements our color/typography/motion rules
 npx skills add vercel-labs/agent-skills@web-design-guidelines -a claude-code
@@ -379,8 +380,8 @@ npx skills add addyosmani/web-quality-skills@accessibility -a claude-code
 
 1. **frontend-god-mode** picks aesthetic and builds
 2. **webapp-testing** boots the dev server and takes screenshots
-3. **impeccable@critique** scores the UX
-4. **impeccable@audit** runs the a11y/perf checks
+3. **`/impeccable critique`** scores the UX
+4. **`/impeccable audit`** runs the a11y/perf checks
 5. frontend-god-mode applies the fixes from steps 3-4
 
 Each step is a separate Claude prompt. The skills compose because they don't overlap in scope — taste layer vs verification layer vs specialty knowledge.
@@ -397,13 +398,15 @@ npx skills list
 
 This skill consolidates and builds on:
 
-- [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+- [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) (MIT)
 - [Framer Motion](https://www.framer.com/motion/)
 - [21st.dev Magic](https://21st.dev/magic)
 - [React Bits](https://reactbits.dev)
-- [Anthropic frontend-design](https://github.com/anthropics/skills)
-- [Impeccable](https://impeccable.style)
-- [design-taste-frontend](https://github.com/leonxlnx/taste-skill)
+- [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) (Apache-2.0)
+- [Impeccable](https://impeccable.style) (Apache-2.0)
+- [design-taste-frontend](https://github.com/leonxlnx/taste-skill) (MIT, © Leonxlnx)
+
+Those projects keep their own licenses. This repo doesn't vendor their files — the rules here are adapted and rewritten, not copied — and no React Bits or 21st.dev component code is redistributed; Claude pulls those from their sources when you install them.
 
 ## Contributing
 
@@ -411,4 +414,4 @@ PRs welcome — see [CONTRIBUTING.md](./CONTRIBUTING.md) for what we accept (sha
 
 ## License
 
-MIT.
+MIT — see [LICENSE](./LICENSE).

@@ -97,7 +97,8 @@ Some recommended fonts are paid/licensed. Use these free fallbacks if the user c
 - Instrument Serif — editorial display
 - Fraunces — luxury/editorial display
 - Newsreader — editorial body
-- Departure Mono — retro tech
+
+**Free, but not on Google Fonts:** Departure Mono (retro tech) — download from departuremono.com and load with `next/font/local`.
 
 If serving a paid font, always use `next/font/local` (not `next/font/google`) and host the .woff2 yourself.
 

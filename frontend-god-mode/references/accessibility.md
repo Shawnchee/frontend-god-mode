@@ -81,7 +81,7 @@ Don't use `<div>` for everything.
 
 ## Form Accessibility
 
-- Label above input (mandatory — see layout.md)
+- Label above input (mandatory)
 - Helper text under input, linked via `aria-describedby`
 - Error text under input, linked via `aria-describedby` AND `aria-invalid="true"`
 - Required fields marked with `aria-required="true"` (and a visual indicator, not just color)
