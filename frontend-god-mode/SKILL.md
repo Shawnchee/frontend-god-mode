@@ -61,7 +61,7 @@ After finishing a meaningful build, write `./DESIGN.md` (create if missing, appe
 
 **Skip this step only when:** the user is making a tiny, isolated tweak (e.g., "fix this button label") that doesn't change tokens or aesthetic.
 
-## The Five Hard Rules (Memorize These)
+## The Six Hard Rules (Memorize These)
 
 These override everything. If you catch yourself doing any of them, stop and rework.
 
