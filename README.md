@@ -59,7 +59,7 @@ The skill itself is just markdown files. **No API keys, no installs, no backgrou
 
 ## What this fetches at runtime
 
-**The skill: nothing.** It's ~70KB of plain markdown that Claude reads when you give it a frontend task. No HTTP calls, no telemetry.
+**The skill: nothing.** It's ~80KB of plain markdown that Claude reads when you give it a frontend task. No HTTP calls, no telemetry.
 
 **Libraries the skill writes code against (only fetch when YOU run them):**
 
@@ -314,12 +314,16 @@ frontend-god-mode/                       # repo root
 │       ├── accessibility.md             # WCAG AA contrast, focus, keyboard, semantic HTML
 │       ├── copy.md                      # Banned vocab, headline patterns, empty/error states
 │       ├── anti-slop.md                 # 24 AI tells, pre-flight checklist
+│       ├── design-doc.md                # DESIGN.md template + anti-drift rules
 │       └── setup-walkthrough.md         # First-run install wizard
 ├── dist/
 │   └── frontend-god-mode.skill          # Packaged installable (zip)
 ├── examples/
-│   └── test-prompts.md                  # 5 test prompts with expected outputs
+│   ├── test-prompts.md                  # 5 test prompts with expected outputs
+│   └── screenshots/                     # Before / After images
 ├── install.sh                           # One-line installer
+├── CONTRIBUTING.md
+├── LICENSE
 └── README.md
 ```
 
