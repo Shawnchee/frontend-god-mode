@@ -1,5 +1,7 @@
 # Bento 2.0 — The Motion-Engine Paradigm
 
+> Adapted from [taste-skill](https://github.com/leonxlnx/taste-skill), Copyright (c) Leonxlnx, MIT License.
+
 For modern SaaS dashboards and feature sections, this is your default architecture. Vercel-core meets Dribbble-clean. Heavy on perpetual physics.
 
 ## When to Use This
